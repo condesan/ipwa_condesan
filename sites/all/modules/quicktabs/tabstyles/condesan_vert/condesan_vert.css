@@ -1,0 +1,49 @@
+/* $Id: navlist.css,v 1.1.2.2 2009/09/25 13:31:35 pasqualle Exp $ */
+
+.quicktabs_wrapper.quicktabs-style-condesan_vert {
+  margin: 0;
+  width: 100%;
+  display: block;
+}
+
+#main-content .content ul.quicktabs_tabs.quicktabs-style-condesan_vert {
+  float: right;
+  padding: 58px 0 0 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  width: 160px;
+}
+#main-content .content ul.quicktabs_tabs.quicktabs-style-condesan_vert li {
+  display: block;
+  margin-right: -1px;
+  margin-bottom: 10px;
+  padding: 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-color: #a8a9ad;
+}
+#main-content .content ul.quicktabs_tabs.quicktabs-style-condesan_vert li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin: 0;
+  padding: 10px 20px;
+  height: auto;
+  font-weight: normal;
+}
+#main-content .content ul.quicktabs_tabs.quicktabs-style-condesan_vert li.active,
+#main-content .content ul.quicktabs_tabs.quicktabs-style-condesan_vert li:hover {
+  background-color: #f77118;
+}
+#main-content .content ul.quicktabs_tabs.quicktabs-style-condesan_vert li.active a {
+  font-weight: bold;
+}
+
+.quicktabs_main.quicktabs-style-condesan_vert {
+  float: left;
+  min-height: 64px;
+  position: relative;
+  z-index: 1;
+  width: 730px;
+}

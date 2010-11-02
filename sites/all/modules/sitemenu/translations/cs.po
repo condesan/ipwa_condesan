@@ -1,0 +1,148 @@
+# $Id: cs.po,v 1.1 2009/02/09 16:27:22 kbahey Exp $
+#
+# Czech translation of Drupal (general)
+# Copyright 2008 Zbyňa (zbyna@vacl.com)
+# Generated from files:
+#  sitemenu.module,v 1.23.2.16 2007/06/01 04:38:10 kbahey
+#  sitemenu.info,v 1.1.2.1 2007/04/19 16:55:20 kbahey
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Czech\n"
+"Last-Translator: Zbyňa VACL (zbyna@vacl.com)\n"
+"Language-Team: Czech zbyna@vacl.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1)?(0):(((n>=2)&&(n<=4))?(1):2));\n"
+
+#: sitemenu.module:26
+msgid "This module provides a site map based on the hierarchy of the site's taxonomy. The site map page shows all vocabularies, terms, and recent nodes within each term. It also provides a block that can be used in the side bar as a navigation menu."
+msgstr "Tento modul zobrazuje mapu webu založenou na hierarchii kategorií."
+
+#: sitemenu.module:39
+msgid "Site map"
+msgstr "Mapa webu"
+
+#: sitemenu.module:48
+msgid "Sitemenu"
+msgstr "Sitemenu modul"
+
+#: sitemenu.module:49
+msgid "Settings for the sitemenu module."
+msgstr "Nastavení pro modul Sitemenu"
+
+#: sitemenu.module:68
+msgid "none"
+msgstr "žádné"
+
+#: sitemenu.module:75
+msgid "Description"
+msgstr "Popis"
+
+#: sitemenu.module:76
+msgid "This is the site map page."
+msgstr "Toto je mapa webu."
+
+#: sitemenu.module:79
+msgid "This text will be displayed at the top of the site menu page"
+msgstr "Tento text bude zobrazen na začátku stránky Mapa webu"
+
+#: sitemenu.module:84
+msgid "Omitted vocabularies"
+msgstr "Nezobrazovat slovníky"
+
+#: sitemenu.module:88
+msgid "Select vocabularies which should be <b>omitted</b> from listings."
+msgstr "Vyberte slovníky, které by <b>neměli</b> být zobrazeny."
+
+#: sitemenu.module:93
+msgid "Navigation link text"
+msgstr "Text odkazu na Mapu webu"
+
+#: sitemenu.module:95;369
+msgid "site map"
+msgstr "Mapa webu"
+
+#: sitemenu.module:98
+msgid "The text in the navigation link which points to the site menu page."
+msgstr "Text navigačního odkazu na Mapu webu."
+
+#: sitemenu.module:103
+msgid "Block title text"
+msgstr "Nadpis bloku"
+
+#: sitemenu.module:105;321
+msgid "Menu"
+msgstr "Menu"
+
+#: sitemenu.module:108
+msgid "If configured as a block, this text shows as the block title."
+msgstr "Je-li nastaveno jako blok, tento text se zobrazí jako nadpis bloku."
+
+#: sitemenu.module:113
+msgid "Show number of nodes for each term"
+msgstr "Zobraz počet příspěvků pro každý pojem"
+
+#: sitemenu.module:119
+msgid "Cache the taxonomy tree for performance."
+msgstr "Cachovat strom kategorií pro lepší výkon"
+
+#: sitemenu.module:121
+msgid "This reduces the load of generating the site menu block for every page, as well as the site map page. It may be suitable only for sites with one language. In some cases, using the i18n module is incompatible with this caching option. In this case, uncheck this box."
+msgstr "Sníží zatížení pro generování bloku Mapa webu pro každou stránku stejně jako pro stránku Mapa webu. Vhodné pouze pro weby v jednom jazyce. V několika případech, použití modulu i18n je nekompatibilní s touto volbou (v takovém případě nechte odškrtnuto)."
+
+#: sitemenu.module:126
+msgid "Show Author and number of Comments (in mousover)"
+msgstr "Zobraz autora a počet komentářů (při najetí myší)"
+
+#: sitemenu.module:132
+msgid "Show vocabulary titles"
+msgstr "Zobraz jméno slovníku"
+
+#: sitemenu.module:138
+msgid "Number of nodes to show"
+msgstr "Zobraz počet příspěvků"
+
+#: sitemenu.module:143
+msgid "Number of nodes to show per taxonomy term. Set to 0 if you do not want nodes to listed."
+msgstr ""
+"Ke každému pojmu zobraz následující počet příspěvků. Pokud "
+"je nastaveno na 0, nejsou zobrazeny žádné příspěvky."
+
+#: sitemenu.module:148
+msgid "Closing description"
+msgstr "Závěrečný popis"
+
+#: sitemenu.module:152
+msgid "This text will be displayed at the bottom of the site menu page"
+msgstr "Tento text bude zobrazen na konci stránky Mapa webu"
+
+#: sitemenu.module:220
+msgid "Author: "
+msgstr "Autor: "
+
+#: sitemenu.module:222
+msgid ", comments: "
+msgstr ", počet komentářů: "
+
+#: sitemenu.module:60
+msgid "use sitemenu"
+msgstr "Zapnout Mapu webu"
+
+#: sitemenu.module:60
+msgid "administer sitemenu"
+msgstr "administrovat Sitemenu modul"
+
+#: sitemenu.module:0
+msgid "sitemenu"
+msgstr "sitemenu"
+
+#: sitemenu.info:0
+msgid "Site menu"
+msgstr "Mapa webu"
+
+#: sitemenu.info:0
+msgid "Provides a block and sitemap from categories"
+msgstr "Poskytuje blok a stránku Mapa webu z kategorií"

@@ -1,0 +1,113 @@
+<?php
+// $Id:  hello module Exp $
+
+// keep the module name consistent throughout
+global $moduleName;
+$moduleName = "condesan";
+
+// call menu hook to create an administration menu to create content for your hello module
+function condesan_menu() {
+global $moduleName;
+  $items = array();
+  $items['admin/settings/'.$moduleName] = array(
+    'title' => ucfirst($moduleName),
+    'description' => 'Set '.$moduleName.' code',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array($moduleName.'_admin'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+   );
+  return $items;
+}
+
+// call admin hook to let you administrate the content of this hello block
+function condesan_admin() {
+global $moduleName;
+  $form = array();
+    $form[$moduleName.'_show_title'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show title'),
+    '#default_value' => variable_get($moduleName.'_show_title', '1'),
+    '#required' => TRUE,
+  );
+  $form[$moduleName.'_number'] = array(
+    '#type' => 'textfield',
+    '#title' => t('How many blocks'),
+    '#default_value' => variable_get($moduleName.'_number', '1'),
+    '#maxlength' => 3,
+    '#required' => TRUE,
+  );
+  $n = (int)variable_get($moduleName.'_number',1);
+  for( $i=1;$i<$n+1;$i++ ) {
+    ($i<2) ? $setreq = TRUE : $setreq = FALSE; 
+   $form[$moduleName.'_'.$i] = array(
+  '#type' => 'textarea',
+  '#title' => t(ucfirst($moduleName).' Block '.($i)),
+  '#default_value' => variable_get($moduleName.'_'.$i, ''),
+  '#maxlength' => 800,
+  '#required' => $setreq,
+  );
+  }
+  return system_settings_form($form);
+}
+
+function condesan_block($op = 'list', $delta = 0, $edit = array()) {
+  switch ($op) {
+    case 'list':
+      $blocks[0] = array(
+        'info' => t('Condesan header'),
+        'weight' => 0,
+        'status' => 1,
+        'region' => 'header'
+      );
+      return $blocks;
+    case 'view':
+      switch ($delta) {
+        case 0:
+            $block = array(
+              'subject' => '',
+              'content' => condesan_header(),
+            );
+            return $block;
+      }
+      break;
+  }
+}
+
+/**
+ * Get the content for related tweets.
+ */
+function condesan_header() {
+  $output = '';
+  //Drupal function (accounts for user selected time zone)
+$datetime = date_now(); 
+
+//Drupal function to generate formated date/time output.
+
+  $output = '<ul id="social-links" class="menu"><li class="rss"><a title="Link para RSS" href="http://www.condesan.org/rss.xml">RSS</a></li><li class="facebook"><a title="Link de Facebook" href="http://www.facebook.com">Facebook</a></li>
+<li class="twitter"><a title="Link de Twitter" href="http://twitter.com">Twitter</a></li><li class="youtube"><a title="Link de You Tube" href="http://www.youtube.com">You Tube</a></li></ul><div id="header-info">'.date_format_date($datetime, $type = 'custom', 'l j F Y').'  |   <a href="/sitemap">Mapa del sitio</a>   |   <a href="/contact">Cont&aacute;ctenos</a></div>';  
+
+  return $output;
+}
+
+function condesan_theme() {
+  return array(
+    'condesan_header' => array(
+      'arguments' => array('results' => NULL),
+    ),
+    //'story_node_form' => array(
+      //'arguments' => array('form' => NULL),
+      //'template' => 'story-node-form',
+    //)
+  );
+
+}
+
+/**
+ * Provide a simple way to show twitter output.
+ */
+function theme_condesan_header($results) {
+  $output = '';
+  $output = 'Nooooooooooooo';  
+  return $output;
+}

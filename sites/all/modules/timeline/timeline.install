@@ -1,0 +1,18 @@
+<?php
+// $Id: timeline.install,v 1.2.2.1.2.4 2009/10/07 10:19:04 xamanu Exp $
+
+/**
+ * @file
+ * Timeline module installation and upgrade code.
+ */
+
+
+/*
+ * Implementation of hook_uninstall().
+ */
+function timeline_uninstall() {
+  variable_del('timeline_library_source');
+  variable_del('timeline_default_width');
+  variable_del('timeline_default_height');
+  variable_del('timeline_debug');
+}

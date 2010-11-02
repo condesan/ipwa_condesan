@@ -1,0 +1,202 @@
+<?php
+// $Id: timeline.module,v 1.20.2.6.2.12 2009/10/08 12:20:57 xamanu Exp $
+
+/**
+ * @file
+ * Module providing a scrollable timeline view for Drupal events and nodes.
+ */
+
+include dirname(__FILE__) .'/timeline.theme.inc';
+
+
+/**
+ * Implementation of hook_help(). Provides online user help.
+ */
+function timeline_help($section) {
+  switch ($section) {
+    case 'admin/modules#name':
+      return t('timeline');
+    case 'admin/modules#description':
+      return t('Provides a draggable and scrollable timeline view. Requires the views module and the libraries module and makes use of the cck and date module if available.');
+    case 'admin/settings/timeline':
+      if (module_exists('views_ui'))
+        $timeline_route = t('To actually create and manage timelines, use the <a href="@views">views administration</a> screen.', array('@views' => url('admin/build/views')));
+      else
+        $timeline_route = t('To actually create and manage timelines, enable the Views UI module in the <a href="@modules">modules administration</a> screen.', array('@modules' => url('admin/build/modules')));
+      return '<p>' . t('Timeline views provides a draggable and scrollable widget for visualizing temporal information. This screen allows you to override default settings for each timeline.') . '</p><p>' . $timeline_route . '</p>';
+  }
+}
+
+/**
+ * Implementation of hook_views_api().
+ */
+function timeline_views_api() {
+  return array('api' => 2);
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function timeline_theme() {
+  return array(
+    'timeline_nodata' => array(),
+    'timeline_bubble_title' => array(
+      'arguments' => array('row' => NULL, 'alias' => NULL),
+    ),
+    'timeline_bubble_url' => array(
+      'arguments' => array('row' => NULL, 'link_enabled' => NULL),
+    ),
+    'timeline_debug' => array(
+      'arguments' => array('debug_array'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu(). Defines menu items and page callbacks.
+ */
+function timeline_menu() {
+  $items = array();
+  $items['admin/settings/timeline'] = array(
+    'title' => 'Timeline',
+    'description' => 'Settings for timeline displays',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('timeline_admin_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'timeline.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Converts different expected date formats to one global date format to talk to the timeline.
+ * Respects drupal's timezone handling.
+ *
+ * @return
+ *   date in defined output
+ *
+ * Notes: -fd
+ * 1. Adding "Z" to ISO-Date. This is a "dirty" trick to disable timeline's automatic timezone detection of the browswer
+ * 2. Using two date_convert functions to be able to respect timezones. This can be done better!
+ * 3. Drupal's gobal timezone settings are taken. Not the date field specific settings.
+ */
+function timeline_date_conversion($date, $input_format, $output_format = 'iso8601') {
+  switch ($input_format) {
+    case 'date':
+    case 'iso8601':
+      switch ($output_format) {
+        case 'iso8601':
+          return date_convert(date_convert($date, DATE_ISO, DATE_UNIX), DATE_UNIX, DATE_ISO, date_get_timezone('date')) . 'Z';
+        case 'gregorian':
+          if (module_exists('date_api') && variable_get('date_api_version', 0) >= 5.2) {
+            return format_date(date_convert($date, DATE_ISO, DATE_UNIX) + timeline_get_timezone(), 'custom', 'M d Y G:i:s', '0', 'en');
+          }
+          else {
+            return format_date(strtotime($date) + timeline_get_timezone(), 'custom', 'M d Y G:i:s', '0', 'en');
+          }
+        case 'timestamp':
+          return date_convert($date, DATE_ISO, DATE_UNIX) + timeline_get_timezone();
+      }
+    case 'datetime':
+      switch ($output_format) {
+        case 'iso8601':
+          return date_convert(date_convert($date, DATE_DATETIME, DATE_UNIX), DATE_UNIX, DATE_ISO, date_get_timezone('date')) . 'Z';
+        case 'gregorian':
+          return format_date(date_convert($date, DATE_DATETIME, DATE_UNIX)  + timeline_get_timezone(), 'custom', 'M d Y G:i:s', '0', 'en');
+        case 'timestamp':
+          return date_convert($date, DATE_DATETIME, DATE_UNIX) + timeline_get_timezone();
+      }
+    case 'datestamp':
+    case 'timestamp':
+      switch ($output_format) {
+        case 'iso8601':
+          if (module_exists('date_api') && variable_get('date_api_version', 0) >= 5.2) {
+            return date_convert($date, DATE_UNIX, DATE_ISO, date_get_timezone('date')) . 'Z';
+          }
+          else {
+            return format_date($date + timeline_get_timezone(), 'custom', 'Y-m-d\TH:i:s\Z', '0', 'en');
+          }
+        case 'gregorian':
+          return format_date($date + timeline_get_timezone(), 'custom', 'M d Y G:i:s', '0', 'en');
+        case 'timestamp':
+          return $date + timeline_get_timezone();
+      }
+  }
+}
+
+
+  /**
+ * Returns the currently logged-in user's timezone, in seconds from GMT.
+ *
+ * @return an integer representation of a timezone
+ */
+function timeline_get_timezone($unit = 'seconds') {
+  global $user;
+  return (variable_get('configurable_timezones', 1) && $user->uid && drupal_strlen($user->timezone)) ?
+    (integer)$user->timezone : (integer)variable_get('date_default_timezone', 0);
+}
+
+/**
+ * Check if all library files properly exist.
+ *
+ * @return: TRUE if everything is correct
+ *          FALSE if no library was found
+ *          string: with an error message of the missing file.
+ */
+function timeline_validate_library() {
+  if (module_exists('libraries')) {
+    $timeline_path = libraries_get_path('simile_timeline');
+    $timeline_library_files = array(
+      '/timeline_js/timeline-api.js',
+      '/timeline_js/timeline-bundle.js',
+      '/timeline_ajax/simile-ajax-api.js',
+      '/timeline_ajax/simile-ajax-bundle.js',
+      '/timeline_ajax/scripts/signal.js',
+    );
+    // check if library is available 'sites/all/libraries/simile_timeline'
+    if (file_check_directory($timeline_path)) {
+      $messages = '';
+      foreach ($timeline_library_files as $file) {
+        $file = $timeline_path . $file;
+        if (!file_exists($file)) {
+          $messages .= '<div>' . t('Error: !timeline_filename not found', array('!timeline_filename' => '<span class="error">' . $file . '</span></div>'));
+        }
+      }
+      // no errors found
+      if ($messages == '')
+        return TRUE;
+      else
+        return $messages;
+    }
+  }
+  // no library found
+  return FALSE;
+}
+
+/**
+ * Scans the themes directory to include more themes
+ *
+ * @return
+ *   array with the filenames of found theme files plus the classic theme
+ *
+ */
+function timeline_available_themes() {
+  $timeline_theme_path = drupal_get_path('module', 'timeline') .'/themes';
+  $timeline_themes = array($timeline_theme_path . '/ClassicTheme' => 'ClassicTheme');
+  foreach (file_scan_directory($timeline_theme_path, '.*', array('.', '..', 'CVS'), 0, FALSE) as $timeline_theme) {
+    if (is_dir($timeline_theme_path . '/' . $timeline_theme->basename)) {
+      $timeline_themes[$timeline_theme_path . '/' . $timeline_theme->basename] = $timeline_theme->basename;
+    }
+  }
+  
+  // Allow other modules to provide themes for the timeline module
+  drupal_alter('timeline_theme_array', $timeline_themes);
+  return $timeline_themes;
+}
+
+// TODO: REMOVE - jm
+function _timeline_to_dim($string) {
+  return intval($string) . (strpos($string, '%') !== FALSE ? '%' : 'px');
+}

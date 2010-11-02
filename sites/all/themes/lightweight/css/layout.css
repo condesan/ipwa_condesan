@@ -1,0 +1,78 @@
+/* 
+ *  Layout
+*/
+
+#main #sidebar-left {
+  width: 200px;
+  float: left;
+}
+
+#main #main-content {
+  /*margin-left: -100%;*/
+  /*float:right;
+  width: 600px;*/
+  /*border: 5px solid #f8f8f8;/*1px dotted #CCC;*/
+  float:left;
+  width: 570px;/*500px;*/
+  margin: 20px 0 0 20px;
+  padding: 10px 20px;
+}
+
+.sidebar-right #main #main-content {
+  width: 655px;/*500px;*/
+  margin-left:0;
+  margin-top:0;
+  padding-top:0;
+  padding-left:0;
+}
+
+.no-sidebars #main #main-content {
+  width: 940px;/*500px;*/
+  margin: 0;
+  padding: 0 10px;
+}
+
+#main {
+  /*margin-left: -100%;*/
+  width: 960px;
+  clear:both;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+}
+
+#main #sidebar-right {
+  /*margin-left:  -150px;*/
+  width: 270px;
+  float: right;
+}
+
+#header{
+  overflow:hidden;/*auto;*/
+  margin:0 auto;
+  width: 960px;/*817px;*/
+  padding:0;	
+}
+
+
+.front #main #main-content{
+  margin:0;
+  padding:0 10px;
+}
+
+/* 
+ *  Footer
+*/
+
+#footer {
+  /*margin-left: -100%;*/
+  clear:both;
+  width: 100%;
+  margin:16px 0 0 0;
+  line-height:40px;
+}
+
+#footer p {
+  margin:0;
+}
+

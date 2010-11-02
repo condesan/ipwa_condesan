@@ -1,0 +1,80 @@
+// $Id: INSTALL.txt,v 1.4.4.3 2009/08/20 00:44:29 xamanu Exp $
+
+REQUIREMENTS
+------------
+- PHP 5.2
+- Drupal 6.x 
+- Views 2 module [1]
+
+- Libraries:
+    SIMILE timeline 2.3.0
+    SIMILE Ajax 2.0-on-static-simile
+
+- Support for the following modules:
+
+  * Libraries module [4] 
+      for local installation of the timeline libraries.
+  * CCK [2] and Date [3] modules
+      The module supports plotting timeline events for any Drupal content type, and includes
+      extended support for custom content types created using CCK  with the Date field type.
+  * imagefield [5] or taxonomy_image [6] and
+      You can define icons for events based on cck imagefield or taxonomy terms using taxonomy_image module.
+  * imagecache [7]
+      Both icon image sources can be pushed through a imagecache preset. 
+
+[1] http://drupal.org/project/views
+[2] http://drupal.org/project/cck
+[3] http://drupal.org/project/date
+[4] http://drupal.org/project/libraries
+[5] http://drupal.org/project/imagefield
+[6] http://drupal.org/project/taxonomy_image
+[7] http://drupal.org/project/libraries
+[8] http://drupal.org/project/imagecache
+
+
+INSTALLATION
+------------
+1. Copy all the module files into a subdirectory called sites/all/modules/timeline/
+   under your Drupal installation directory.
+
+2. Go to administer >> modules and enable the timeline module.
+   Ensure that the Views module is installed and enabled.
+
+3. Go to administer >> settings >> timeline to review and change the configuration options to your liking.
+   See "Local Installation" instructions to install the timeline libraries on your server.
+
+4. See README.txt for information on creating timeline views.
+
+
+LOCAL INSTALLATION
+-------------------
+By default, the SIMILE Timeline (and Ajax) libraries can be used from the SIMILE server. 
+But if you want to install them locally you can follow these steps:
+
+1. Follow general instructions step 1 and 2.
+
+2. Obtain the libraries of SIMILE Timeline 2.3.0 and SIMILE Ajax 2.0-on-static-simile.
+
+   * You can download a prepackaged and patched (see known issues) version from
+     http://github.com/xamanu/SIMILE-Timeline-libraries/tree/master (press download button)
+
+   * Or you can check out via Subversion the original files from the SIMILE servers:
+     svn export http://simile-widgets.googlecode.com/svn/timeline/tags/2.3.0/src/webapp/api timeline_js
+     svn export http://simile-widgets.googlecode.com/svn/ajax/tags/2.0-on-static-simile/src/webapp/api timeline_ajax 
+     (Please note that you might want to patch the simile-ajax-bundle.js, see known issues)
+     
+3. Place the two libraries into a new sites/all/libraries/simile_timeline directory.
+   Note: timeline libraries have to be inside the folder: timeline_js
+         ajax libraries have to be inside the folder: timeline_ajax
+
+4. Go to administer >> settings >> timeline and activate local use. Check error messages on this page to 
+   be sure that everything is going to be included properly. 
+
+
+KNOWN ISSUES:
+-----------------------
+1. The SIMILE Ajax libraries includes a __history__.html, which produces an 404 (not found) error [1].
+You can path the libraries/simile_timeline/timeline_ajax/simile-ajax-bundle.js in line 1945 setting "enabled:false"
+There is no way to avoid this when using the SIMILE server as the source for the libraries.
+
+[1] http://code.google.com/p/simile-widgets/issues/detail?id=61

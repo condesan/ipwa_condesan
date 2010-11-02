@@ -1,0 +1,6 @@
+; $Id: Condesan Exp $
+name = Condesan
+description = "Custom functionallity for Condesan"
+core = 6.x
+package = Development
+version = "6.x-1.0"

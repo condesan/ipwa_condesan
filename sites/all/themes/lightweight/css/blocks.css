@@ -1,0 +1,241 @@
+/* 
+ *  Blocks
+*/
+
+div.block {
+  padding:10px;
+  margin-top:15px;
+}
+
+.front #content-top div.block {
+  padding:0;
+  margin-top:0;
+}
+
+#header div.block {
+  padding:0;
+  margin:0;
+  float:right;
+}
+
+#block-quicktabs-1,
+#block-condesan-0 {
+  overflow:hidden;
+}
+
+/*  quicktabs  */
+
+/*#quicktabs_tabpage_6_0 .views-row {
+  display:block;
+  float:left;
+  overflow:hidden;
+  padding:10px;
+  width:160px;
+}
+
+#quicktabs_tabpage_6_0 .views-row img{
+  float:left;
+  padding: 0px 4px 2px 0px;
+}*/
+
+#quicktabs-6 .views-row{
+  display:block;
+  overflow:hidden;
+  padding:10px;
+  /*width:160px;*/
+}
+
+#quicktabs-6 .views-row img{
+  float:right;
+  padding: 0px 0 2px 10px;
+  margin-top:-4px;
+}
+
+#quicktabs-6 .views-row h2{
+  margin: 1px 0 2px 0;
+}
+
+#quicktabs-6 .views-row p{
+  margin: 1px 0 2px 0;
+}
+
+#quicktabs-6 .views-row .more a,
+#quicktabs-7 .more a{
+  color: #F1731C;
+  background:url("../images/sprites/general.png") no-repeat scroll -288px -145px transparent;
+  padding: 0 0 0 18px;
+  margin-left:0;
+}
+
+/*   novedades blocks   */
+
+#block-views-novedades-block_1 .views-row,
+#block-views-novedades-block_2 .views-row,
+#block-views-novedades-block_3 .views-row {
+  display:block;
+  overflow:hidden;
+  padding:10px;
+  width:435px;
+  /*width:160px;*/
+}
+
+#block-views-novedades-block_1 .views-row img,
+#block-views-novedades-block_2 .views-row img,
+#block-views-novedades-block_3 .views-row img {
+  float:right;
+  padding: 0px 0 2px 10px;
+  margin-top:-4px;
+}
+
+#block-views-novedades-block_1 .views-row h2,
+#block-views-novedades-block_2 .views-row h2,
+#block-views-novedades-block_3 .views-row h2 {
+  margin: 1px 0 2px 0;
+}
+
+#block-views-novedades-block_1 .views-row p,
+#block-views-novedades-block_2 .views-row p,
+#block-views-novedades-block_3 .views-row p {
+  margin: 1px 0 2px 0;
+}
+
+#block-views-novedades-block_1 .views-row .more a,
+#block-views-novedades-block_2 .views-row .more a,
+#block-views-novedades-block_3 .views-row .more a {
+  color: #F1731C;
+  background:url("../images/sprites/general.png") no-repeat scroll -288px -145px transparent;
+  padding: 0 0 0 18px;
+}
+
+/*  Que es condesan  */
+
+.condesan-cdn {
+  float:right;
+  width:300px;
+}
+
+.condesan-cdn {
+  float:right;
+  width:300px;
+}
+
+#main-content .content .condesan-cdn ul.menu {
+  border:medium none;
+  list-style:none outside none;
+  text-align:left;
+  padding-left: 40px;
+  float:none;
+}
+
+#main-content .content .condesan-cdn ul.menu li {
+  margin:0 0 0 0.5em;
+  float:none;
+}
+
+#main-content .content .condesan-cdn li.leaf {
+list-style-image:url("../../../../../misc/menu-leaf.png");
+list-style-type:square;
+margin:0;
+padding:0.2em 0.5em 0 0;
+}
+
+#main-content .content .condesan-cdn li.expanded {
+list-style-image:url("../../../../../misc/menu-expanded.png");
+list-style-type:circle;
+}
+
+#block-quicktabs-2 {
+  overflow:hidden;
+}
+
+/*  Carrousel  */
+
+/*programas Panorama Andino dialogo andino*/
+
+#block-views-2db768481af05c99dc50263c7b248a03,
+#block-views-595b4752d6df1c0f5e502c8800b834ff{
+  overflow:hidden;
+  display:block;
+  border-top:2px dotted #949494;
+  border-bottom:2px dotted #949494;
+  height:131px;
+  padding: 20px 0;
+}
+
+#block-views-2db768481af05c99dc50263c7b248a03 .views-row,
+#block-views-595b4752d6df1c0f5e502c8800b834ff .views-row {
+  float:left;
+  padding:0 45px 0 0;
+  margin-top:15px;
+}
+
+.carousel-wrap  {
+display:inline-block;
+height:131px !important;
+margin:0;
+vertical-align:middle;
+width:884px;
+}
+
+.carousel .carousel-control{
+cursor:pointer;
+display:inline-block;
+height:131px;
+line-height:999px;
+overflow:hidden;
+vertical-align:middle;
+width:21px;
+}
+
+.carousel .carousel-previous,
+.carousel .carousel-next {
+background:url("../images/sprites/carousel.png") no-repeat scroll 0 0 transparent;
+}
+
+.carousel .carousel-next {
+background-position: -21px 0;
+}
+
+#main-content .content .carousel ul {
+height:131px;
+list-style:none outside none;
+margin:0;
+overflow:hidden;
+padding: 0;
+}
+
+#main-content .content .carousel ul li {
+float:left;
+list-style:none outside none;
+margin:0;
+width:293px;
+}
+
+#main-content .content .carousel .disabled,
+#main-content .content .carousel .disabled:hover {
+cursor:default;
+opacity:0.4;
+}
+
+.carousel .views-row h3,
+.carousel .views-row h3 {
+  background:url("../images/botonmorado.png") no-repeat scroll 0 0 transparent;
+  margin:0;
+  /*top:-113px;
+  padding:4px;
+  position:relative;*/
+  line-height: 35px;
+  height: 35px;
+  text-align:center;
+  font-weight: normal;
+}
+
+#main-content .content .carousel .views-row h3  a,
+#main-content .content .carousel .views-row h3 a {
+  color:#fff;
+  font-size:15px;
+}
+
+#content-bottom .block {
+  overflow:hidden;
+}

@@ -1,0 +1,3 @@
+<?php
+
+include_once('quienes_somos.features.inc');

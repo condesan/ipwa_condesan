@@ -1,0 +1,85 @@
+/* 
+ *  Header
+*/
+
+#header-info {
+  float:right;
+  line-height: 26px;
+  padding: 0 0 0 20px;
+}
+
+#header-info a{
+  color: #949494;
+}
+
+#header .block{
+  color: #949494;
+  height: 26px;
+}
+
+#social-links {
+  height: 25px;
+  float: right;
+  padding: 0 0 0 14px;
+}
+
+#social-links li {
+  margin:0;
+}
+
+#social-links li a {
+  background: url('../images/sprites/general.png') no-repeat;
+  display:block;
+  height:18px;
+  width: 18px;
+  margin: 4px 11px 4px 0;
+  text-indent:-9999px;  
+}
+
+#social-links .rss a {
+  background-position: 0 -131px;
+}
+
+#social-links .facebook a {
+  background-position: -18px -131px;
+}
+
+#social-links .twitter a {
+  background-position: -36px -131px;
+  width: 17px;
+}
+
+#social-links .youtube a {
+  background-position: -53px -131px;
+}
+
+h1#site-name {
+  margin:0;
+  padding:20px 10px;
+  background: url("../images/llama.png") no-repeat scroll 906px 82px transparent;
+}
+
+h1#site-name a{	
+  text-indent: -9999px;
+  background: url('../images/sprites/general.png') no-repeat 0 -44px;
+  display:block;
+  height:86px;
+  width: 300px;
+}
+
+#search-theme-form {
+  width: 210px;
+  float:right;
+}
+
+#search input.form-text {
+  border:0;
+  font-size:90%;
+  padding:1px;
+  margin: 7px 0;
+}
+
+#search #edit-submit {
+  	position:relative;
+	top:4px;
+}

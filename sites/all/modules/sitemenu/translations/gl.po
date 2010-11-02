@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sitemenu module gl\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2007-04-27 14:34+0100\n"
+"Last-Translator: Rafa Couto <rafacouto@gmail.com>\n"
+"Language-Team: Traductores de Drupal ó galego <drupal-gl@galpon.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Galician\n"
+
+#: sitemenu.module:93
+msgid "Author: %username"
+msgstr "Autor: %username"
+
+#: sitemenu.module:95
+msgid ", comments: "
+msgstr ", comentarios:"
+
+#: sitemenu.module:190
+#: ;269
+msgid "Menu"
+msgstr "Menú"
+
+#: sitemenu.module:220
+msgid "site map page and block menu, based on taxonomy"
+msgstr "páxina do mapa do sitio e menú de bloque, baseado na taxonomía"
+
+#: sitemenu.module:224
+msgid "This module provides a site map based on the hierarchy of the site's taxonomy. The site map page shows all vocabularies, terms, and recent nodes within each term. It also provides a block that can be used in the side bar as a navigation menu."
+msgstr "Este módulo elaboura un mapa do sitio baseado na xerarquía da taxonomía do sitio. A páxina de sitemap amosa tódolos vocabularios, termos, e nodos recentes asociados a un termo. Tamén elaboura un bloque que pode ser usado no barra lateral coma un menú de navegación."
+
+#: sitemenu.module:236
+msgid "none"
+msgstr "ningún"
+
+#: sitemenu.module:242
+msgid "Description"
+msgstr "Descripción"
+
+#: sitemenu.module:243
+msgid "This is the site map page."
+msgstr "Esta é a páxina do mapa do sitio."
+
+#: sitemenu.module:246
+msgid "This text will be displayed at the top of the site menu page"
+msgstr "Este texto amosarase enriba da páxina do menú do sitio"
+
+#: sitemenu.module:250
+msgid "Omitted vocabularies"
+msgstr "Vocabularios obviados"
+
+#: sitemenu.module:254
+msgid "Select vocabularies which should be <b>omitted</b> from listings."
+msgstr "Escolla os vocabularios que debería ser <b>obviados</b> para os listados."
+
+#: sitemenu.module:258
+msgid "Navigation link text"
+msgstr "Texto na navegación"
+
+#: sitemenu.module:260
+#: ;338;379
+msgid "site map"
+msgstr "mapa do sitio"
+
+#: sitemenu.module:263
+msgid "The text in the navigation link which points to the site menu page."
+msgstr "O texto na ligazón de navegación que leva a páxina do menú do sitio."
+
+#: sitemenu.module:267
+msgid "Block title text"
+msgstr "Texto no título do bloque"
+
+#: sitemenu.module:272
+msgid "If configured as a block, this text shows as the block title."
+msgstr "Se vai configurado coma bloque, este texto amósase coma o título do bloque."
+
+#: sitemenu.module:276
+msgid "Link to vocabulary page when listing vocabulary"
+msgstr "Ligazón a páxina do vocabulario nos listados de vocabularios"
+
+#: sitemenu.module:281
+msgid "Show number of nodes for each term"
+msgstr "Amosar o número de nodos por cada termo"
+
+#: sitemenu.module:286
+msgid "Show Author and number of Comments (in mousover)"
+msgstr "Amosar autor e número de comentarios (cando se pasa o rato)"
+
+#: sitemenu.module:291
+msgid "Number of nodes to show"
+msgstr "Número de nodos a amosar"
+
+#: sitemenu.module:293
+msgid "0"
+msgstr "0"
+
+#: sitemenu.module:296
+msgid "Number of nodes to show per taxonomy term. Set to 0 if you do not want nodes to listed."
+msgstr "Número de nodos a amosar por termo da taxonomía. Fixar a 0 para non listar ningún."
+
+#: sitemenu.module:300
+msgid "Closing description"
+msgstr "Descripción de peche"
+
+#: sitemenu.module:304
+msgid "This text will be displayed at the bottom of the site menu page"
+msgstr "Este texto amosarase ó final da páxina do menú do sitio"
+
+#: sitemenu.module:318
+#: ;0
+msgid "sitemenu"
+msgstr "sitemenu"
+
+#: sitemenu.module:328
+msgid "use sitemenu"
+msgstr "Usar sitemenu"
+

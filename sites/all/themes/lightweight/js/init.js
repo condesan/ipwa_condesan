@@ -1,0 +1,1 @@
+Cufon.replace('h1, h2, h3, h4, .primary-links, .quicktabs_tabs, .secondary-links, ul.tabs, #footer', {hover: true});
