@@ -26,12 +26,30 @@
       </div>
       <div class="bot"></div>
 	</div>
-	
-	
-	
-	
   </div>
-
+  <div class="right">
+	<div class="dialogo-box aprendizaje">
+      <div class="top"></div>
+      <div class="inner-wrapper">
+	  <h2>Periodismo para el desarrollo </h2>
+	  <?php print $field_imagen_accion_rendered ?>
+	  <?php print $field_descripcion_accion_rendered ?>
+	  <?php print $field_recursos_dos_rendered ?>
+      </div>
+      <div class="bot"></div>
+	</div>
+    <div class="dialogo-box aprendizaje">
+      <div class="top"></div>
+      <div class="inner-wrapper">
+	  <h2>Gestión de información</h2>
+	  <?php print $field_imagen_conocimiento_rendered ?>
+	  <?php print $field_descripcion_conocimiento_rendered ?>
+	  <?php print $field_recursos_tres_rendered ?>
+      </div>
+      <div class="bot"></div>
+	</div>
+  </div>
+  </div>
 
 <?php if ($links): ?>
   <div class="node-links"><?php print $links ?></div>
