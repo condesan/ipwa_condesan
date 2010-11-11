@@ -19,7 +19,7 @@
     <?php print $print['sendtoprinter']; ?>
     <?php print $print['robots_meta']; ?>
     <?php print $print['favicon']; ?>
-    <link href="/condesan/sites/all/modules/print/css/print.css?F" media="all" rel="stylesheet" type="text/css">
+    <link href="/sites/all/modules/print/css/print.css?F" media="all" rel="stylesheet" type="text/css">
   </head>
   <body>
     <?php if (!empty($print['message'])) {

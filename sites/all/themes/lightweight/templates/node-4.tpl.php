@@ -2,7 +2,7 @@
   <?php
     if (user_access('edit any page content')) 
     {
-    print '<div class="button_wrapper"><a href="'. base_path() .'/node/'.$node->nid.'" class="button"><span>Ver</span></a> <a href="'. base_path() .'/node/'.$node->nid.'/edit" class="button"><span>Editar</span></a> <a href="'. base_path() .'admin/build/menu-customize/menu-cdn" class="button"><span>Editar CDN</span></a></div>';
+    print '<div class="button_wrapper"><a href="/node/'.$node->nid.'" class="button"><span>Ver</span></a> <a href="/node/'.$node->nid.'/edit" class="button"><span>Editar</span></a> <a href="/admin/build/menu-customize/menu-cdn" class="button"><span>Editar CDN</span></a></div>';
     }
   ?>
 

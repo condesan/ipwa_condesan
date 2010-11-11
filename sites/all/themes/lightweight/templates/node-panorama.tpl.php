@@ -4,7 +4,7 @@
     if (user_access('edit any page content')) 
     {
     //print l('Editar', 'node/'.$node->nid.'/edit');
-    print '<div class="button_wrapper"><a href="'. base_path() .'node/'.$node->nid.'" class="button"><span>Ver</span></a> <a href="'. base_path() .'node/'.$node->nid.'/edit" class="button"><span>Editar</span></a></div>';
+    print '<div class="button_wrapper"><a href="/node/'.$node->nid.'" class="button"><span>Ver</span></a> <a href="/node/'.$node->nid.'/edit" class="button"><span>Editar</span></a></div>';
     }
   ?>
 

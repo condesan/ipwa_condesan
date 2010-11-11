@@ -59,7 +59,7 @@
     <div class="carousel">
       <?php print $rows; ?>
     </div>
-      <a id="experiencias" href="#"><img src="<?php print base_path(); ?>sites/all/themes/lightweight/images/banco-experiencias.jpg" /></a>
+      <a id="experiencias" href=""><img src="/sites/all/themes/lightweight/images/banco-experiencias.jpg" /></a>
   <?php elseif ($empty): ?>
     <div class="view-empty">
       <?php print $empty; ?>

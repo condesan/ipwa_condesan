@@ -867,7 +867,7 @@ div.novedades {
   -webkit-border-radius: 10px;*/
   padding: 0;
   width: 219px;
-  clear:both;
+  /*clear:both;*/
 }
 
 .novedades .top{
@@ -1070,7 +1070,7 @@ border-left:1px solid #ccc;
 }
 
 .node-infoandina .general {
-  width: auto;
+  width: 673px;
 }
 
 .node-infoandina .aprendizaje {

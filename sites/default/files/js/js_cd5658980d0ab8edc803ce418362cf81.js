@@ -3127,39 +3127,124 @@ Drupal.behaviors.adminToolbarMenu = function(context) {
   }
 };
 ;
-// $Id: admin.devel.js,v 1.1.2.1 2009/11/20 02:44:32 yhahn Exp $
-
-Drupal.behaviors.adminDevel = function(context) {
-  $('#block-admin-devel:not(.admin-processed)').each(function() {
-    var devel = $(this);
-    devel.addClass('admin-processed');
-
-    // Pull logged values from footer output into the block.
-    $('li', devel).each(function() {
-      var key = $(this).attr('class').split(' ')[0];
-      if (key && $('body > .'+key).size() > 0) {
-        var value = $('body > .'+key).html();
-        $('div.dev-info', this).html(value);
+// $Id: pathauto.js,v 1.5.2.1 2010/02/10 21:47:40 greggles Exp $
+if (Drupal.jsEnabled) {
+  $(document).ready(function() {
+    if ($("#edit-pathauto-perform-alias").size() && $("#edit-pathauto-perform-alias").attr("checked")) {
+      // Disable input and hide its description.
+      $("#edit-path").attr("disabled","disabled");
+      $("#edit-path-wrapper > div.description").hide(0);
+    }
+    $("#edit-pathauto-perform-alias").bind("click", function() {
+      if ($("#edit-pathauto-perform-alias").attr("checked")) {
+        // Auto-alias checked; disable input.
+        $("#edit-path").attr("disabled","disabled");
+        $("#edit-path-wrapper > div[class=description]").slideUp('fast');
+      }
+      else {
+        // Auto-alias unchecked; enable input.
+        $("#edit-path").removeAttr("disabled");
+        $("#edit-path")[0].focus();
+        $("#edit-path-wrapper > div[class=description]").slideDown('fast');
       }
     });
-
-    // Query list show handler.
-    $('input.dev-querylog-show', devel).click(function() {
-      $(this).hide().siblings('input.dev-querylog-hide').show();
-      $('body > *:not(#admin-toolbar, .devel-querylog)').addClass('devel-hide');
-      $('body > .devel-querylog').show();
-      return false;
-    });
-
-    // Query list hide handler.
-    $('input.dev-querylog-hide').click(function() {
-      $(this).hide().siblings('input.dev-querylog-show').show();
-      $('body > *:not(#admin-toolbar, .devel-querylog)').removeClass('devel-hide');
-      $('body > .devel-querylog').hide();
-      return false;
-    });
   });
-};
+
+  Drupal.verticalTabs = Drupal.verticalTabs || {};
+
+  Drupal.verticalTabs.path = function() {
+    var path = $('#edit-path').val();
+    var automatic = $('#edit-pathauto-perform-alias').attr('checked');
+
+    if (automatic) {
+      return Drupal.t('Automatic alias');
+    }
+    if (path) {
+      return Drupal.t('Alias: @alias', { '@alias': path });
+    }
+    else {
+      return Drupal.t('No alias');
+    }
+  }
+}
+;
+// $Id: node.js,v 1.1.2.1 2009/12/09 01:08:39 davereid Exp $
+
+Drupal.verticalTabs = Drupal.verticalTabs || {};
+
+Drupal.verticalTabs.revision_information = function() {
+  if ($('#edit-revision').length) {
+    if ($('#edit-revision').attr('checked')) {
+      return Drupal.t('New revision');
+    }
+    else {
+      return Drupal.t('No revision');
+    }
+  }
+  else {
+    return '';
+  }
+}
+
+Drupal.verticalTabs.author = function() {
+  var author = $('#edit-name').val() || Drupal.t('Anonymous');
+  var date = $('#edit-date').val();
+  if (date) {
+    return Drupal.t('By @name on @date', { '@name': author, '@date': date });
+  }
+  else {
+    return Drupal.t('By @name', { '@name': author });
+  }
+}
+
+Drupal.verticalTabs.options = function() {
+  var vals = [];
+  if ($('#edit-status').attr('checked')) {
+    vals.push(Drupal.t('Published'));
+  }
+  else {
+    vals.push(Drupal.t('Not published'));
+  }
+  if ($('#edit-promote').attr('checked')) {
+    vals.push(Drupal.t('Promoted to front page'));
+  }
+  if ($('#edit-sticky').attr('checked')) {
+    vals.push(Drupal.t('Sticky on top of lists'));
+  }
+  if (vals.join(', ') == '') {
+    return Drupal.t('None');
+  }
+  return vals.join(', ');
+}
+;
+// $Id: comment.js,v 1.1.2.1 2009/12/09 01:08:39 davereid Exp $
+
+Drupal.verticalTabs = Drupal.verticalTabs || {};
+
+Drupal.verticalTabs.comment_settings = function() {
+  return $('.vertical-tabs-comment_settings input:checked').parent().text();
+}
+
+Drupal.verticalTabs.comment = function() {
+  var vals = [];
+  vals.push($(".vertical-tabs-comment input[name='comment']:checked").parent().text());
+  vals.push($(".vertical-tabs-comment input[name='comment_default_mode']:checked").parent().text());
+  vals.push(Drupal.t('@number comments per page', {'@number': $(".vertical-tabs-comment select[name='comment_default_per_page'] option:selected").val()}));
+  return vals.join(', ');
+}
+;
+// $Id: menu.js,v 1.1.2.1 2009/12/09 01:08:39 davereid Exp $
+
+Drupal.verticalTabs = Drupal.verticalTabs || {};
+
+Drupal.verticalTabs.menu = function() {
+  if ($('#edit-menu-link-title').val()) {
+    return $('#edit-menu-link-title').val();
+  }
+  else {
+    return Drupal.t('Not in menu');
+  }
+}
 ;
 // $Id: autocomplete.js,v 1.23 2008/01/04 11:53:21 goba Exp $
 
@@ -3460,293 +3545,291 @@ Drupal.ACDB.prototype.cancel = function() {
   this.searchString = '';
 };
 ;
-// $Id: base.js,v 1.11.2.1 2010/03/10 20:08:58 merlinofchaos Exp $
-/**
- * @file base.js
- *
- * Some basic behaviors and utility functions for Views.
- */
-
-Drupal.Views = {};
+// $Id: collapse.js,v 1.17 2008/01/29 10:58:25 goba Exp $
 
 /**
- * jQuery UI tabs, Views integration component
+ * Toggle the visibility of a fieldset using smooth animations
  */
-Drupal.behaviors.viewsTabs = function (context) {
-  $('#views-tabset:not(.views-processed)').addClass('views-processed').each(function() {
-    new Drupal.Views.Tabs($(this), {selectedClass: 'active'});
-  });
-
-  $('a.views-remove-link')
-    .addClass('views-processed')
-    .click(function() {
-      var id = $(this).attr('id').replace('views-remove-link-', '');
-      $('#views-row-' + id).hide();
-      $('#views-removed-' + id).attr('checked', true);
-      return false;
-    });
-}
-
-/**
- * For IE, attach some javascript so that our hovers do what they're supposed
- * to do.
- */
-Drupal.behaviors.viewsHoverlinks = function() {
-  if ($.browser.msie) {
-    // If IE, attach a hover event so we can see our admin links.
-    $("div.view:not(.views-hover-processed)").addClass('views-hover-processed').hover(
-      function() {
-        $('div.views-hide', this).addClass("views-hide-hover"); return true;
+Drupal.toggleFieldset = function(fieldset) {
+  if ($(fieldset).is('.collapsed')) {
+    // Action div containers are processed separately because of a IE bug
+    // that alters the default submit button behavior.
+    var content = $('> div:not(.action)', fieldset);
+    $(fieldset).removeClass('collapsed');
+    content.hide();
+    content.slideDown( {
+      duration: 'fast',
+      easing: 'linear',
+      complete: function() {
+        Drupal.collapseScrollIntoView(this.parentNode);
+        this.parentNode.animating = false;
+        $('div.action', fieldset).show();
       },
-      function(){
-        $('div.views-hide', this).removeClass("views-hide-hover"); return true;
+      step: function() {
+        // Scroll the fieldset into view
+        Drupal.collapseScrollIntoView(this.parentNode);
       }
-    );
-    $("div.views-admin-links:not(.views-hover-processed)")
-      .addClass('views-hover-processed')
-      .hover(
-        function() {
-          $(this).addClass("views-admin-links-hover"); return true;
-        },
-        function(){
-          $(this).removeClass("views-admin-links-hover"); return true;
+    });
+  }
+  else {
+    $('div.action', fieldset).hide();
+    var content = $('> div:not(.action)', fieldset).slideUp('fast', function() {
+      $(this.parentNode).addClass('collapsed');
+      this.parentNode.animating = false;
+    });
+  }
+};
+
+/**
+ * Scroll a given fieldset into view as much as possible.
+ */
+Drupal.collapseScrollIntoView = function (node) {
+  var h = self.innerHeight || document.documentElement.clientHeight || $('body')[0].clientHeight || 0;
+  var offset = self.pageYOffset || document.documentElement.scrollTop || $('body')[0].scrollTop || 0;
+  var posY = $(node).offset().top;
+  var fudge = 55;
+  if (posY + node.offsetHeight + fudge > h + offset) {
+    if (node.offsetHeight > h) {
+      window.scrollTo(0, posY);
+    } else {
+      window.scrollTo(0, posY + node.offsetHeight - h + fudge);
+    }
+  }
+};
+
+Drupal.behaviors.collapse = function (context) {
+  $('fieldset.collapsible > legend:not(.collapse-processed)', context).each(function() {
+    var fieldset = $(this.parentNode);
+    // Expand if there are errors inside
+    if ($('input.error, textarea.error, select.error', fieldset).size() > 0) {
+      fieldset.removeClass('collapsed');
+    }
+
+    // Turn the legend into a clickable link and wrap the contents of the fieldset
+    // in a div for easier animation
+    var text = this.innerHTML;
+      $(this).empty().append($('<a href="#">'+ text +'</a>').click(function() {
+        var fieldset = $(this).parents('fieldset:first')[0];
+        // Don't animate multiple times
+        if (!fieldset.animating) {
+          fieldset.animating = true;
+          Drupal.toggleFieldset(fieldset);
         }
-      );
-  }
-}
-
-/**
- * Helper function to parse a querystring.
- */
-Drupal.Views.parseQueryString = function (query) {
-  var args = {};
-  var pos = query.indexOf('?');
-  if (pos != -1) {
-    query = query.substring(pos + 1);
-  }
-  var pairs = query.split('&');
-  for(var i in pairs) {
-    var pair = pairs[i].split('=');
-    // Ignore the 'q' path argument, if present.
-    if (pair[0] != 'q' && pair[1]) {
-      args[pair[0]] = decodeURIComponent(pair[1].replace(/\+/g, ' '));
-    }
-  }
-  return args;
-};
-
-/**
- * Helper function to return a view's arguments based on a path.
- */
-Drupal.Views.parseViewArgs = function (href, viewPath) {
-  var returnObj = {};
-  var path = Drupal.Views.getPath(href);
-  // Ensure we have a correct path.
-  if (viewPath && path.substring(0, viewPath.length + 1) == viewPath + '/') {
-    var args = decodeURIComponent(path.substring(viewPath.length + 1, path.length));
-    returnObj.view_args = args;
-    returnObj.view_path = path;
-  }
-  return returnObj;
-};
-
-/**
- * Strip off the protocol plus domain from an href.
- */
-Drupal.Views.pathPortion = function (href) {
-  // Remove e.g. http://example.com if present.
-  var protocol = window.location.protocol;
-  if (href.substring(0, protocol.length) == protocol) {
-    // 2 is the length of the '//' that normally follows the protocol
-    href = href.substring(href.indexOf('/', protocol.length + 2));
-  }
-  return href;
-};
-
-/**
- * Return the Drupal path portion of an href.
- */
-Drupal.Views.getPath = function (href) {
-  href = Drupal.Views.pathPortion(href);
-  href = href.substring(Drupal.settings.basePath.length, href.length);
-  // 3 is the length of the '?q=' added to the url without clean urls.
-  if (href.substring(0, 3) == '?q=') {
-    href = href.substring(3, href.length);
-  }
-  var chars = ['#', '?', '&'];
-  for (i in chars) {
-    if (href.indexOf(chars[i]) > -1) {
-      href = href.substr(0, href.indexOf(chars[i]));
-    }
-  }
-  return href;
+        return false;
+      }))
+      .after($('<div class="fieldset-wrapper"></div>')
+      .append(fieldset.children(':not(legend):not(.action)')))
+      .addClass('collapse-processed');
+  });
 };
 ;
-// $Id: ajax_view.js,v 1.19.2.5 2010/03/25 18:25:28 merlinofchaos Exp $
+// $Id: teaser.js,v 1.12.2.2 2010/03/01 10:13:18 goba Exp $
 
 /**
- * @file ajaxView.js
+ * Auto-attach for teaser behavior.
  *
- * Handles AJAX fetching of views, including filter submission and response.
+ * Note: depends on resizable textareas.
  */
-
-Drupal.Views.Ajax = Drupal.Views.Ajax || {};
-
-/**
- * An ajax responder that accepts a packet of JSON data and acts appropriately.
- *
- * The following fields control behavior.
- * - 'display': Display the associated data in the view area.
- */
-Drupal.Views.Ajax.ajaxViewResponse = function(target, response) {
-
-  if (response.debug) {
-    alert(response.debug);
+Drupal.behaviors.teaser = function(context) {
+  // This breaks in Konqueror. Prevent it from running.
+  if (/KDE/.test(navigator.vendor)) {
+    return;
   }
 
-  var $view = $(target);
+  $('textarea.teaser:not(.teaser-processed)', context).each(function() {
+    var teaser = $(this).addClass('teaser-processed');
 
-  // Check the 'display' for data.
-  if (response.status && response.display) {
-    var $newView = $(response.display);
-    $view.replaceWith($newView);
-    $view = $newView;
-    Drupal.attachBehaviors($view.parent());
-  }
+    // Move teaser textarea before body, and remove its form-item wrapper.
+    var body = $('#'+ Drupal.settings.teaser[this.id]);
+    var checkbox = $('#'+ Drupal.settings.teaserCheckbox[this.id]).parent();
+    var checked = $(checkbox).children('input').attr('checked') ? true : false;
+    var parent = teaser[0].parentNode;
+    $(body).before(teaser);
+    $(parent).remove();
 
-  if (response.messages) {
-    // Show any messages (but first remove old ones, if there are any).
-    $view.find('.views-messages').remove().end().prepend(response.messages);
-  }
-};
-
-/**
- * Ajax behavior for views.
- */
-Drupal.behaviors.ViewsAjaxView = function() {
-  if (Drupal.settings && Drupal.settings.views && Drupal.settings.views.ajaxViews) {
-    var ajax_path = Drupal.settings.views.ajax_path;
-    // If there are multiple views this might've ended up showing up multiple times.
-    if (ajax_path.constructor.toString().indexOf("Array") != -1) {
-      ajax_path = ajax_path[0];
+    function trim(text) {
+      return text.replace(/^\s+/g, '').replace(/\s+$/g, '');
     }
-    $.each(Drupal.settings.views.ajaxViews, function(i, settings) {
-      var view = '.view-dom-id-' + settings.view_dom_id;
-      if (!$(view).size()) {
-        // Backward compatibility: if 'views-view.tpl.php' is old and doesn't
-        // contain the 'view-dom-id-#' class, we fall back to the old way of
-        // locating the view:
-        view = '.view-id-' + settings.view_name + '.view-display-id-' + settings.view_display_id;
+
+    // Join the teaser back to the body.
+    function join_teaser() {
+      if (teaser.val()) {
+        body.val(trim(teaser.val()) +'\r\n\r\n'+ trim(body.val()));
+      }
+      // Empty, hide and disable teaser.
+      teaser[0].value = '';
+      $(teaser).attr('disabled', 'disabled');
+      $(teaser).parent().slideUp('fast');
+      // Change label.
+      $(this).val(Drupal.t('Split summary at cursor'));
+      // Hide separate teaser checkbox.
+      $(checkbox).hide();
+      // Force a hidden checkbox to be checked (to ensure that the body is
+      // correctly processed on form submit when teaser/body are in joined
+      // state), and remember the current checked status.
+      checked = $(checkbox).children('input').attr('checked') ? true : false;
+      $(checkbox).children('input').attr('checked', true);
+    }
+
+    // Split the teaser from the body.
+    function split_teaser() {
+      body[0].focus();
+      var selection = Drupal.getSelection(body[0]);
+      var split = selection.start;
+      var text = body.val();
+
+      // Note: using val() fails sometimes. jQuery bug?
+      teaser[0].value = trim(text.slice(0, split));
+      body[0].value = trim(text.slice(split));
+      // Reveal and enable teaser
+      $(teaser).attr('disabled', '');
+      $(teaser).parent().slideDown('fast');
+      // Change label
+      $(this).val(Drupal.t('Join summary'));
+      // Show separate teaser checkbox, restore checked value.
+      $(checkbox).show().children('input').attr('checked', checked);
+    }
+
+    // Add split/join button.
+    var button = $('<div class="teaser-button-wrapper"><input type="button" class="teaser-button" /></div>');
+    var include = $('#'+ this.id.substring(0, this.id.length - 2) +'include');
+    $(include).parent().parent().before(button);
+
+    // Extract the teaser from the body, if set. Otherwise, stay in joined mode.
+    var text = body.val().split('<!--break-->');
+    if (text.length >= 2) {
+      teaser[0].value = trim(text.shift());
+      body[0].value = trim(text.join('<!--break-->'));
+      $(teaser).attr('disabled', '');
+      $('input', button).val(Drupal.t('Join summary')).toggle(join_teaser, split_teaser);
+    }
+    else {
+      $('input', button).val(Drupal.t('Split summary at cursor')).toggle(split_teaser, join_teaser);
+      $(checkbox).hide().children('input').attr('checked', true);
+    }
+
+    // Make sure that textarea.js has done its magic to ensure proper visibility state.
+    if (Drupal.behaviors.textarea && teaser.is(('.form-textarea:not(.textarea-processed)'))) {
+      Drupal.behaviors.textarea(teaser.parentNode);
+    }
+    // Set initial visibility
+    if ($(teaser).is(':disabled')) {
+      $(teaser).parent().hide();
+    }
+
+  });
+};
+;
+// $Id: vertical_tabs.js,v 1.3.2.19 2010/02/03 18:24:42 davereid Exp $
+
+Drupal.verticalTabs = Drupal.verticalTabs || {};
+Drupal.settings.verticalTabs = Drupal.settings.verticalTabs || {};
+
+Drupal.behaviors.verticalTabs = function() {
+  if (!$('.vertical-tabs-list').size() && Drupal.settings.verticalTabs) {
+    var ul = $('<ul class="vertical-tabs-list"></ul>');
+    var panes = $('<div class="vertical-tabs-panes"></div>');
+    $.each(Drupal.settings.verticalTabs, function(k, v) {
+      var summary = '', cssClass = 'vertical-tabs-list-' + k;
+      if (v.callback && Drupal.verticalTabs[v.callback]) {
+        summary = '<span class="summary">'+ Drupal.verticalTabs[v.callback].apply(this, v.args) +'</span>';
+      }
+      else {
+        cssClass += ' vertical-tabs-nosummary';
       }
 
-
-      // Process exposed filter forms.
-      $('form#views-exposed-form-' + settings.view_name.replace(/_/g, '-') + '-' + settings.view_display_id.replace(/_/g, '-'))
-      .filter(':not(.views-processed)')
-      .each(function () {
-        // remove 'q' from the form; it's there for clean URLs
-        // so that it submits to the right place with regular submit
-        // but this method is submitting elsewhere.
-        $('input[name=q]', this).remove();
-        var form = this;
-        // ajaxSubmit doesn't accept a data argument, so we have to
-        // pass additional fields this way.
-        $.each(settings, function(key, setting) {
-          $(form).append('<input type="hidden" name="'+ key + '" value="'+ setting +'"/>');
-        });
-      })
-      .addClass('views-processed')
-      .submit(function () {
-        $('input[type=submit], button', this).after('<span class="views-throbbing">&nbsp</span>');
-        var object = this;
-        $(this).ajaxSubmit({
-          url: ajax_path,
-          type: 'GET',
-          success: function(response) {
-            // Call all callbacks.
-            if (response.__callbacks) {
-              $.each(response.__callbacks, function(i, callback) {
-                eval(callback)(view, response);
-              });
-              $('.views-throbbing', object).remove();
-            }
-          },
-          error: function(xhr) { Drupal.Views.Ajax.handleErrors(xhr, ajax_path); $('.views-throbbing', object).remove(); },
-          dataType: 'json'
-        });
-
-        return false;
+      // Add a list item to the vertical tabs list.
+      $('<li class="vertical-tab-button"><a href="#' + k + '" class="' + cssClass + '"><strong>'+ v.name + '</strong>' + summary +'</a></li>').appendTo(ul)
+        .find('a')
+        .bind('click', function() {
+          $(this).parent().addClass('selected').siblings().removeClass('selected');
+          $('.vertical-tabs-' + k).show().siblings('.vertical-tabs-pane').hide();
+          return false;
       });
 
-      $(view).filter(':not(.views-processed)')
-        // Don't attach to nested views. Doing so would attach multiple behaviors
-        // to a given element.
-        .filter(function() {
-          // If there is at least one parent with a view class, this view
-          // is nested (e.g., an attachment). Bail.
-          return !$(this).parents('.view').size();
-        })
-        .each(function() {
-          // Set a reference that will work in subsequent calls.
-          var target = this;
-          $(this)
-            .addClass('views-processed')
-            // Process pager, tablesort, and attachment summary links.
-            .find('ul.pager > li > a, th.views-field a, .attachment .views-summary a')
-            .each(function () {
-              var viewData = { 'js': 1 };
-              // Construct an object using the settings defaults and then overriding
-              // with data specific to the link.
-              $.extend(
-                viewData,
-                Drupal.Views.parseQueryString($(this).attr('href')),
-                // Extract argument data from the URL.
-                Drupal.Views.parseViewArgs($(this).attr('href'), settings.view_base_path),
-                // Settings must be used last to avoid sending url aliases to the server.
-                settings
-              );
-              $(this).click(function () {
-                $.extend(viewData, Drupal.Views.parseViewArgs($(this).attr('href'), settings.view_base_path));
-                $(this).addClass('views-throbbing');
-                $.ajax({
-                  url: ajax_path,
-                  type: 'GET',
-                  data: viewData,
-                  success: function(response) {
-                    $(this).removeClass('views-throbbing');
-                    // Scroll to the top of the view. This will allow users
-                    // to browse newly loaded content after e.g. clicking a pager
-                    // link.
-                    var offset = $(target).offset();
-                    // We can't guarantee that the scrollable object should be
-                    // the body, as the view could be embedded in something
-                    // more complex such as a modal popup. Recurse up the DOM
-                    // and scroll the first element that has a non-zero top.
-                    var scrollTarget = target;
-                    while ($(scrollTarget).scrollTop() == 0 && $(scrollTarget).parent()) {
-                      scrollTarget = $(scrollTarget).parent()
-                    }
-                    // Only scroll upward
-                    if (offset.top - 10 < $(scrollTarget).scrollTop()) {
-                      $(scrollTarget).animate({scrollTop: (offset.top - 10)}, 500);
-                    }
-                    // Call all callbacks.
-                    if (response.__callbacks) {
-                      $.each(response.__callbacks, function(i, callback) {
-                        eval(callback)(target, response);
-                      });
-                    }
-                  },
-                  error: function(xhr) { $(this).removeClass('views-throbbing'); Drupal.Views.Ajax.handleErrors(xhr, ajax_path); },
-                  dataType: 'json'
-                });
+      // Find the contents of the fieldset (depending on #collapsible property).
+      var fieldset = $('<fieldset></fieldset>');
+      var fieldsetContents = $('.vertical-tabs-' + k + ' > .fieldset-wrapper > *');
+      if (fieldsetContents.size()) {
+        fieldsetContents.appendTo(fieldset);
+      }
+      else {
+        $('.vertical-tabs-' + k).children().appendTo(fieldset);
+      }
 
-                return false;
-              });
-            }); // .each function () {
-      }); // $view.filter().each
-    }); // .each Drupal.settings.views.ajaxViews
-  } // if
+      // Remove the legend from the fieldset.
+      fieldset.children('legend').remove();
+
+      // Add the fieldset contents to the toggled fieldsets.
+      fieldset.appendTo(panes)
+      .addClass('vertical-tabs-' + k)
+      .addClass('vertical-tabs-pane')
+      .find('input, select, textarea').bind('change', function() {
+        if (v.callback && Drupal.verticalTabs[v.callback]) {
+          $('a.vertical-tabs-list-' + k + ' span.summary').html(Drupal.verticalTabs[v.callback].apply(this, v.args));
+        }
+      });
+      $('.vertical-tabs-' + k).remove();
+    });
+
+    $('div.vertical-tabs').html(ul).append(panes);
+
+    // Add an error class to any fieldsets with errors in them.
+    $('fieldset.vertical-tabs-pane').each(function(i){
+      if ($(this).find('div.form-item .error').size()) {
+        $('li.vertical-tab-button').eq(i).addClass('error');
+      }
+    })
+
+    // Activate the first tab.
+    $('fieldset.vertical-tabs-pane').hide();
+    $('fieldset.vertical-tabs-pane:first').show();
+    $('div.vertical-tabs ul li:first').addClass('first selected');
+    $('div.vertical-tabs ul li:last').addClass('last');
+    $('div.vertical-tabs').show();
+  }
+}
+
+Drupal.behaviors.verticalTabsReload = function() {
+  $.each(Drupal.settings.verticalTabs, function(k, v) {
+    if (v.callback && Drupal.verticalTabs[v.callback]) {
+      $('a.vertical-tabs-list-' + k + ' span.summary').html(Drupal.verticalTabs[v.callback].apply(this, v.args));
+    }
+  });
+}
+;
+// $Id: admin.devel.js,v 1.1.2.1 2009/11/20 02:44:32 yhahn Exp $
+
+Drupal.behaviors.adminDevel = function(context) {
+  $('#block-admin-devel:not(.admin-processed)').each(function() {
+    var devel = $(this);
+    devel.addClass('admin-processed');
+
+    // Pull logged values from footer output into the block.
+    $('li', devel).each(function() {
+      var key = $(this).attr('class').split(' ')[0];
+      if (key && $('body > .'+key).size() > 0) {
+        var value = $('body > .'+key).html();
+        $('div.dev-info', this).html(value);
+      }
+    });
+
+    // Query list show handler.
+    $('input.dev-querylog-show', devel).click(function() {
+      $(this).hide().siblings('input.dev-querylog-hide').show();
+      $('body > *:not(#admin-toolbar, .devel-querylog)').addClass('devel-hide');
+      $('body > .devel-querylog').show();
+      return false;
+    });
+
+    // Query list hide handler.
+    $('input.dev-querylog-hide').click(function() {
+      $(this).hide().siblings('input.dev-querylog-show').show();
+      $('body > *:not(#admin-toolbar, .devel-querylog)').removeClass('devel-hide');
+      $('body > .devel-querylog').hide();
+      return false;
+    });
+  });
 };
 ;
 /*

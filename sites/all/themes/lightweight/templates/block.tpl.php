@@ -14,7 +14,7 @@ $edit_links = l(t('edit block'), 'admin/build/block/configure/'. $block->module 
   </div>
 
 <?php if (user_access('administer blocks')) :?>  
-  <div class="edit"><?php #print $edit_links; ?></div>
+  <div class="edit"><?php print $edit_links; ?></div>
 <?php endif; ?>
 
 </div>
