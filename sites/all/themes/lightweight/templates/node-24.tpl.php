@@ -21,20 +21,28 @@
 	  <?php print $field_recursos_rendered ?>
 	</div>
   </div>
-  <div class="right">
-	<div class="dialogo-box aprendizaje">
-	  <h2>Periodismo para el desarrollo </h2>
-	  <?php print $field_imagen_accion_rendered ?>
-	  <?php print $field_descripcion_accion_rendered ?>
-	  <?php print $field_recursos_accion_rendered ?>
+ 
+<div class="novedades">
+      <div class="top"></div>
+	<?php
+	$viewName = 'novedades';
+	//Pass every tid to the argument.
+	$argument = $node->nid;
+	//if (arg(0) == 'node' && is_numeric(arg(1))) $nodeid = arg(1);
+	//if ($nodeid = 73){
+	//$display_id = 'block_4';
+    //}
+    //else {
+    $display_id = 'block_3';
+    //}
+	print "<h2>Novedades</h2>";
+	print views_embed_view($viewName, $display_id, $argument);
+	?>
+      <div class="bot"></div>
 	</div>
-    <div class="dialogo-box aprendizaje">
-	  <h2>Gestión de información</h2>
-	  <?php print $field_imagen_conocimiento_rendered ?>
-	  <?php print $field_descripcion_conocimiento_rendered ?>
-	  <?php print $field_recursos_conocimiento_rendered ?>
-	</div>
-  </div>
+ 
+ 
+ 
   </div>
 
 <?php if ($links): ?>

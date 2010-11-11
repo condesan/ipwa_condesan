@@ -83,6 +83,8 @@ function lightweight_id_safe($string) {
 *   A sequential array of variables passed to the theme function.
 */
 function lightweight_preprocess_page(&$vars) {
+	/*dsm($vars);*/
+	
   if (!$vars['is_front']) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
@@ -131,7 +133,7 @@ function lightweight_preprocess_search_theme_form(&$vars, $hook) {
 
 
 function lightweight_breadcrumb($breadcrumb) {
-  $img_separator = '<img src="/condesan/sites/all/themes/lightweight/images/breadcrumbs.png" >'; //( youimage locatopn like this/images/mybreadcrumbimage.png;)
+  $img_separator = '<img src="'.base_path().'sites/all/themes/lightweight/images/breadcrumbs.png">'; //( youimage locatopn like this/images/mybreadcrumbimage.png;)
   if (!empty($breadcrumb)) {
       return '<div class="breadcrumb">'. implode($img_separator, $breadcrumb) .'</div>';
   }

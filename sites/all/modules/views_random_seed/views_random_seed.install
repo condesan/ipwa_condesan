@@ -1,0 +1,10 @@
+<?php
+// $Id: views_random_seed.install,v 1.1 2009/03/07 21:20:23 swentel Exp $
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function views_random_seed_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'views_seed%%'");
+  cache_clear_all('variables', 'cache');  
+}

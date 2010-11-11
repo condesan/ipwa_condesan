@@ -39,6 +39,9 @@ input.form-text{
   padding:3px;
 }
 
+#footer a{
+color: #fff;
+}
 
 
 /* 
@@ -239,13 +242,15 @@ div.tabs{padding: 10px 0 0 0;}
 
 /*    content styling */
 
-#main-content .content ul li{
-  list-style:none;
-  /*background:url(images/bullet.png) no-repeat 0 0.4em;*/
+#main-content .node-programas .content ul li{
+  /*background:url(images/bullet.png) no-repeat 0 0.4em;
   padding: 0 0 .2em 1.5em;
-  font-weight: bold;
+  font-weight: bold;*/
+  list-style-type:disc;
+  margin-left:30px;
   /*font-family: Arial, Helvetica, "Bitstream Vera Sans", sans-serif;*/
 }
+
 
 #main-content .content ul li a{color: #460B57;}
 #front #main-content .content ul li{
@@ -860,6 +865,7 @@ div.novedades {
   -webkit-border-radius: 10px;*/
   padding: 0;
   width: 219px;
+  clear:both;
 }
 
 .novedades .top{
@@ -982,8 +988,8 @@ div.novedades {
 }
 
 .dialogo-box .inner-wrapper {
-  border-left:1px solid #ccc;
-  border-right:1px solid #ccc;
+  /*border-left:1px solid #ccc;
+  border-right:1px solid #ccc;*/
   padding: 0 10px 20px 12px;
 }
 
@@ -1043,7 +1049,7 @@ div.novedades {
 
 .node-programas div.left,
 .node-infoandina div.left {
-  width: 600px;
+  width: 100%;
 }
 
 .node-programas div.right,
@@ -1058,7 +1064,7 @@ div.novedades {
 }
 
 .node-infoandina div.left {
-  width: 620px;
+  width: 100%;
 }
 
 .node-infoandina .general {
@@ -1534,3 +1540,94 @@ width:46%;
 .print_html{
 margin-left:855px;
 }
+
+/*Cambios*/
+
+/* Colaboradores */
+#quicktabs_container_2 .content h2.teaser-title {
+font-size:16px;
+}
+
+/* Infoandina */
+
+#content-bottom #block-views-Boletin_archive-block{
+/*margin-left:16%;*/
+}
+
+#content-bottom #block-block-5{
+/*margin-left:15%;*/
+}
+
+
+/* Boletín */
+
+/* Novedades */
+.views-exposed-form .views-exposed-widget .form-submit {
+margin-top:1.2em;
+}
+
+
+/* Dialogo andino */
+
+#experiencias {
+float:right;
+margin:-131px 0 0;
+}
+
+.carousel .carousel-next {
+background-position:-21px 0;
+}
+
+.page-programas-que-es-dialogo-andino .carousel-wrap {
+width:584px;
+}
+
+.carousel-wrap {
+display:inline-block;
+height:131px !important;
+margin:0;
+vertical-align:middle;
+width:884px;
+}
+
+
+/* Portada */
+
+.iniciativasall .item-list ul li {
+list-style:disc;
+/*margin:0 0 0.25em 1.5em;
+padding:0;*/
+}
+
+
+.iniciativasall .view-content a img{
+float:left;
+margin-top:0;
+padding-bottom:10px;
+padding-right:10px;
+}
+
+.iniciativasall .view-footer a{
+float:right;
+color:#F1731C;
+background:url("images/sprites/general.png") no-repeat scroll -288px -145px transparent;
+padding:0 10px 10px 15px;
+}
+.iniciativasall .view-content .views-row{
+clear:both;
+padding-bottom:10px;
+}
+
+/* Publicaciones todas */
+
+.publicacionesall .item-list ul li {
+list-style:disc;
+}
+.publicacionesall .item-list li a{
+font-size: 14px;
+}
+
+.publicacionesall .views-exposed-form .views-exposed-widget .form-submit {
+margin-top:0;
+}
+
