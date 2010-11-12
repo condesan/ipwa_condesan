@@ -22,6 +22,7 @@
     <link href="/sites/all/modules/print/css/print.css?F" media="all" rel="stylesheet" type="text/css">
   </head>
   <body>
+  asdasdasdasd asdjasldj
     <?php if (!empty($print['message'])) {
       print '<div class="print-message">'. $print['message'] .'</div><p />';
     } ?>

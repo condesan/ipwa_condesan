@@ -1702,3 +1702,21 @@ padding-right:15px;
 #navigation .edit-search-theme-form-1-wrapper {
 margin:0px;
 }
+
+/* Vista de busqueda de texonomias */
+
+.taxlist .views-exposed-form .views-exposed-widget .form-submit {
+margin-top:0;
+}
+
+.taxlist .views-exposed-widgets {
+margin-bottom:2em;
+}
+
+
+.taxlist .item-list ul li {
+list-style:disc;
+margin:0 0 0.25em 1.5em;
+padding:0;
+}
+

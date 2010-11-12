@@ -84,9 +84,12 @@ $datetime = date_now();
 
 //Drupal function to generate formated date/time output.
 
-  $output = '<ul id="social-links" class="menu"><li class="rss"><a title="Link para RSS" href="http://www.condesan.org/rss.xml">RSS</a></li><li class="facebook"><a title="Link de Facebook" href="http://www.facebook.com">Facebook</a></li>
+  /*$output = '<ul id="social-links" class="menu"><li class="rss"><a title="Link para RSS" href="http://www.condesan.org/rss.xml">RSS</a></li><li class="facebook"><a title="Link de Facebook" href="http://www.facebook.com">Facebook</a></li>
 <li class="twitter"><a title="Link de Twitter" href="http://twitter.com">Twitter</a></li><li class="youtube"><a title="Link de You Tube" href="http://www.youtube.com">You Tube</a></li></ul><div id="header-info">'.date_format_date($datetime, $type = 'custom', 'l j F Y').'  |   <a href="/sitemap">Mapa del sitio</a>   |   <a href="/contact">Cont&aacute;ctenos</a></div>';  
+*/
 
+$output = '<ul id="social-links" class="menu"><li class="rss"><a title="Link para RSS" href="'.base_path().'rss.xml">RSS</a></li><li class="facebook"><a title="Link de Facebook" href="http://www.facebook.com/condesan" target="_blank">Facebook</a></li>
+</li></ul><div id="header-info">'.date_format_date($datetime, $type = 'custom', 'l j F Y').'  |   <a href="'.base_path().'mapa-de-sitio">Mapa del sitio</a>   |   <a href="'.base_path().'contact">Cont&aacute;ctenos</a></div>';  
   return $output;
 }
 

@@ -3,7 +3,7 @@
     <?php print $title ?></a></h2>
 <?php endif; ?>
 
-	
+
 
   <div class="content clear-block">
 	<?php
@@ -34,10 +34,11 @@
 	  <?php print $field_descripcion_conocimiento_rendered ?>
 	</div>
   </div>
-  </div>
+
 
 <?php if ($links): ?>
   <div class="node-links"><?php print $links ?></div>
 <?php endif; ?>
 
 </div>
+
