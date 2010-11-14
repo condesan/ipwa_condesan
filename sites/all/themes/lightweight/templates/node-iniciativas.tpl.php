@@ -6,46 +6,48 @@
 
     <div class="left">
 		<div class="iniciativa-box descripcion">
+		
           <div class="top"></div>
           <div class="inner-wrapper">
 		  <h2>Descripción</h2>
 	      <?php print $field_imagen_rendered ?>
 	      <?php print $field_descripcion_rendered ?>
           </div>
-          <div class="bot"></div>
+        <div class="bot"></div>
 		</div>
-		<div class="iniciativa-box">
+		
+		<!--<div class="iniciativa-box">
           <div class="top"></div>
           <div class="inner-wrapper">
 		  <h2>Aliados</h2>
-	      <?php print $field_aliados_rendered ?>
+	      <?php #print $field_aliados_rendered ?>
           </div>
           <div class="bot"></div>
-		</div>
+		</div>-->
 	  </div>
 	  <div class="right">
 		<div class="iniciativa-box intervencion">
           <div class="top"></div>
           <div class="inner-wrapper">
 		  <h2>Zona de intervención</h2>
-		  <?php print $field_imagen_accion_rendered ?>
-	      <?php print $field_descripcion_accion_rendered ?>
+		  <?php #print $field_imagen_accion_rendered ?>
+	      <?php #print $field_descripcion_accion_rendered ?>
           </div>
           <div class="bot"></div>
 		</div>
-	    <div class="iniciativa-box">
+	    <!--<div class="iniciativa-box">
           <div class="top"></div>
           <div class="inner-wrapper">
 		  <?php
 		  $viewName = 'novedades';
 	      $display_id = 'block_10';
 	      $argument = $node->nid;
-		  print "<h2>Novedades</h2>";
-		  print views_embed_view($viewName, $display_id, $argument);
+		  #print "<h2>Novedades</h2>";
+		  #print views_embed_view($viewName, $display_id, $argument);
 		  ?>
           </div>
           <div class="bot"></div>
-		</div>
+		</div>-->
 	  </div>
   </div>
 

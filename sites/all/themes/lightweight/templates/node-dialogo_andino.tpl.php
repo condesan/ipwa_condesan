@@ -23,6 +23,10 @@
 	  </div>
 	  <?php print $field_descripcion_rendered ?>
 	  <?php print phptemplate_facebook_like($node_url); ?>  
+		
+		
+		<?php print l('Equipo', $node_url . ' #myDiv2 > *',  array('external' => TRUE, 'query' => NULL, 'attributes' => array('rel' => 'lightmodal[|height:400px;width:600px]', 'class' => 'boton'))); ?>
+		
 	</div>
 	<div class="novedades">
 	  <div class="top"></div>
@@ -61,6 +65,24 @@
 	  </div>
 	  <div class="bot"></div>
 	</div>
+	
+
+
+	<div id="myDiv2" style="display:none" class="dialogo-box miembros">
+		<div>
+        	<?php
+				//$firstMiembro= $field_equipo[0]['nid'];
+				//$firstMiembro= node_load($firstMiembro);
+				//dprint_r($firstMiembro)	
+			?>
+			<?php //print $firstMiembro->title ?>
+	  <?php print $field_equipo_rendered ?>
+	  </div>
+	</div>
+	
+			
+			
+	
   </div>
   </div>
 
@@ -70,5 +92,9 @@
 
 </div>
 
+
+
+
+	
 
 <?php print $field_logotipos_rendered ?>

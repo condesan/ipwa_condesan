@@ -20,7 +20,7 @@
 	
     <?php //print $content ?>
 	<div class="general">
-	djkashdjkashdj
+
 	  <div class="general-right">
 	    <?php print $field_imagen_rendered ?>
 	  </div>

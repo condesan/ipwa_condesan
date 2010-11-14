@@ -723,6 +723,7 @@ width:5em;
 
 #block-quicktabs-6 {
   margin-left:20px;
+  padding-bottom:10px;
 }
 
 #block-block-5 {
@@ -1718,5 +1719,116 @@ margin-bottom:2em;
 list-style:disc;
 margin:0 0 0.25em 1.5em;
 padding:0;
+}
+
+
+/* Vistas de la portada*/
+.publicacionesportada .view-footer{
+float:right;
+padding-right:25%;
+}
+
+.publicacionesportada .view-footer a{
+float:right;
+padding-right:25%;
+background:url("images/sprites/general.png") no-repeat scroll -288px -145px transparent;
+color:#F1731C;
+margin-left:0;
+padding:0 0 0 18px;
+}
+
+/* Foros */
+
+.eforos .item-list ul li {
+list-style-type: disc;
+padding-bottom:10px;
+}
+
+/* Videos */
+
+.videostodos .item-list ul li {
+list-style-type:disc;
+padding-bottom:0px;
+}
+
+.videostodos .item-list li a {
+font-size:16px;
+}
+
+.videostodos .item-list h2 {
+margin: 0;
+}
+
+.videostodos .views-exposed-form .views-exposed-widget .form-submit {
+margin-top:0;
+}
+
+.videostodos .views-exposed-widgets {
+margin-bottom:20px;
+}
+
+/* Audios */
+
+.audiostodos .item-list ul li {
+list-style-type:disc;
+padding-bottom:0px;
+}
+
+.audiostodos .item-list li a {
+font-size:16px;
+}
+
+.audiostodos .item-list h2 {
+margin: 0;
+}
+
+.audiostodos .views-exposed-form .views-exposed-widget .form-submit {
+margin-top:0;
+}
+
+.audiostodos .views-exposed-widgets {
+margin-bottom:20px;
+}
+
+/* Fotos*/
+
+.fotostodas .item-list ul li {
+list-style-type:disc;
+padding-bottom:0px;
+}
+
+.fotostodas .item-list li a {
+font-size:16px;
+}
+
+.fotostodas .item-list h2 {
+margin: 0;
+}
+
+.fotostodas .views-exposed-form .views-exposed-widget .form-submit {
+margin-top:0;
+}
+
+.fotostodas .views-exposed-widgets {
+margin-bottom:20px;
+}
+
+/* Fotos bloque */
+
+.fotosbloque .view-content a img{
+float:right;
+}
+
+#quicktabs-6 .views-row img {
+margin-top:-20px;
+}
+
+.menudown .view-content li a img{
+float:left;
+padding-right:10px;
+}
+
+.menudown{
+padding-left:10%;
 }
 

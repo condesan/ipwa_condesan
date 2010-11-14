@@ -18,8 +18,8 @@
 	//$vocs= array(1,2,3); //  ids of vocabs for which you want to build a tag cloud
 	//$tagcloud = theme('tagadelic_weighted',tagadelic_sort_tags(tagadelic_get_weighted_tags($vocs)));
 	//print $tagcloud;
-	$block = (object) module_invoke('cumulus', 'block', 'view', "0");
-	print theme('block',$block);
+	#$block = (object) module_invoke('cumulus', 'block', 'view', "0");
+	#print theme('block',$block);
 	?>
   </div>
 

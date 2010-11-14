@@ -13,6 +13,9 @@
 	  <h2>Que Somos?</h2>
       <?php print $field_video_rendered ?>
       <?php print $node->content['body']['#value']; ?>
+			
+			<?php print l('Equipo', $node_url . ' #myDiv2 > *',  array('external' => TRUE, 'query' => NULL, 'attributes' => array('rel' => 'lightmodal[|height:400px;width:600px]', 'class' => 'boton'))); ?>
+					
 	</div>
 	<div class="dialogo-box">
 	  <h2>Comunicación hallazgos</h2>
@@ -34,6 +37,23 @@
 	  <?php print $field_descripcion_conocimiento_rendered ?>
 	  <?php print $field_recursos_conocimiento_rendered ?>
 	</div>
+	
+	
+		<div id="myDiv2" style="display:none" class="dialogo-box miembros">
+		<div>
+        	<?php
+				//$firstMiembro= $field_equipo[0]['nid'];
+				//$firstMiembro= node_load($firstMiembro);
+				//dprint_r($firstMiembro)	
+			?>
+			<?php //print $firstMiembro->title ?>
+	  <?php print $field_equipo_rendered ?>
+	  </div>
+	</div>
+	
+	
+	
+	
   </div>
   </div>
 
