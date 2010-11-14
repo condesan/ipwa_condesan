@@ -89,7 +89,7 @@
  *   $db_url = 'mysqli://username:password@localhost/databasename';
  *   $db_url = 'pgsql://username:password@localhost/databasename';
  */
-$db_url = 'mysql://devcond_admin:admin@localhost/devcond_condesan';
+$db_url = 'mysql://root:123456@localhost/ipwa_condesan';
 $db_prefix = '';
 
 /**
@@ -123,7 +123,7 @@ $update_free_access = FALSE;
  * for you.
  */
  #$base_url = 'http://173.255.194.12:8080/condesan';  // NO trailing slash!
- $base_url = 'http://dev.condesan.net/ipwa/condesan';  // NO trailing slash!
+ $base_url = 'http://localhost/ipwa_condesan';  // NO trailing slash!
 /**
  * PHP settings:
  *
