@@ -32,6 +32,7 @@
 		  <h2>Zona de intervención</h2>
 		  <?php #print $field_imagen_accion_rendered ?>
 	      <?php #print $field_descripcion_accion_rendered ?>
+				<?php print $field_ubicacion_rendered; ?>
           </div>
           <div class="bot"></div>
 		</div>

@@ -74,12 +74,9 @@ h1#site-name a{
 
 #search input.form-text {
   border:0;
-  font-size:90%;
+  font-size:85%;
   padding:1px;
   margin: 7px 0;
 }
 
-#search #edit-submit {
-  	position:relative;
-	top:4px;
-}
+

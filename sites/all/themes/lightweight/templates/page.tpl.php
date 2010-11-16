@@ -107,8 +107,11 @@
 	</div>
 	
 	<?php if ($footer_message): ?>
+			<div id="logos">
+			 <?php print $footer; ?>
+      </div>	
 	    <div id="footer">
-		    <?php print $footer_message ?><?php print $footer; ?>
+		    <?php print $footer_message ?>
 	    </div>
 	<?php endif; ?>
 	

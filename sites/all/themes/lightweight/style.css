@@ -13,7 +13,7 @@ body{
   /*width:  817px;
   margin:  0 auto;	
   padding: 0px;*/
-  font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif;
+  font-family: Calibri, 'Trebuchet MS', Helvetica, Arial, Verdana;;
   /* Use a 12px base font size with a 16px line height */
   font-size: 0.75em; /* 16px x .75 = 12px */
   line-height: 1.333em; /* 12px x 1.333 = 16px */
@@ -48,6 +48,7 @@ color: #fff;
  * Override drupal system.css 
 */
 
+/*
 .item-list ul li {
   list-style-type: none;
 }
@@ -59,6 +60,7 @@ ul.links {
 .block ul {
   padding:0;
 }
+*/
 
 
 /* 
@@ -153,9 +155,11 @@ h1.title{
   font-size:1.2em;
 }
 
+/*
 h1, h2, h3{
   font-family: Geneva, Helvetica,"Bitstream Vera Sans", sans-serif;
 }
+*/
 
 h2 a{
   color: #460b57;
@@ -288,9 +292,11 @@ input#edit-search-theme-form-keys {
   float:left;
 }
 
+/*
 #navigation #search-theme-form input#edit-submit-1{
 margin: 5px 0 0 1px;
 }
+*/
 
 
 
@@ -541,11 +547,6 @@ ul.nice-menu li {
   padding-bottom: 30px;
 }
 
-.view-novedades .views-row {
-float: left;
-padding: 30px;
-display: block;
-}
 
 #navigation{
   background-color:#582A8A;
@@ -724,6 +725,17 @@ width:5em;
 #block-quicktabs-6 {
   margin-left:20px;
   padding-bottom:10px;
+  height:350px;
+}
+
+#block-quicktabs-6 .view-footer p{
+  margin: 0px;
+}
+
+#quicktabs-6 .views-row img {
+float:right;
+margin-top:-14px;
+padding:0 0 2px 10px;
 }
 
 #block-block-5 {
@@ -1632,9 +1644,7 @@ margin-bottom:-5px;
 font-size: 14px;
 }
 
-.publicacionesall .views-exposed-form .views-exposed-widget .form-submit {
-margin-top:0;
-}
+
 
 /* Novedades */
 
@@ -1679,7 +1689,7 @@ width:90%;
 margin-top:0em;
 }
 .novedadesxall .views-exposed-form{
-float:right;
+float:left;
 }
 
 .novedadesxall .view-content{
@@ -1725,7 +1735,7 @@ padding:0;
 /* Vistas de la portada*/
 .publicacionesportada .view-footer{
 float:right;
-padding-right:25%;
+padding-right:170px;
 }
 
 .publicacionesportada .view-footer a{
@@ -1736,6 +1746,36 @@ color:#F1731C;
 margin-left:0;
 padding:0 0 0 18px;
 }
+
+.fotosbloque .view-footer {
+float:right;
+padding-right:170px;
+}
+
+.fotosbloque .view-footer a{
+float:right;
+padding-right:25%;
+background:url("images/sprites/general.png") no-repeat scroll -288px -145px transparent;
+color:#F1731C;
+margin-left:0;
+padding:0 0 0 18px;
+}
+
+.videosbloque .view-footer {
+float:right;
+padding-right:170px;
+}
+
+.videosbloque .view-footer a{
+float:right;
+padding-right:25%;
+background:url("images/sprites/general.png") no-repeat scroll -288px -145px transparent;
+color:#F1731C;
+margin-left:0;
+padding:0 0 0 18px;
+}
+
+
 
 /* Foros */
 
@@ -1832,3 +1872,99 @@ padding-right:10px;
 padding-left:10%;
 }
 
+/* Iniciativas */
+.iniconcluidas table {
+border-collapse:collapse;
+border-right:0px solid red;
+border-top:0px solid #E5EFF8;
+margin:0em auto;
+width:90%;
+}
+
+.iniconcluidas td {
+border-bottom:0px;
+border-left:0px;
+color:#678197;
+padding:0.3em 1em;
+text-align:left;
+width:300px;
+}
+
+.iniconcluidas .view-content a img{
+float:left;
+padding-right:10px;
+padding-bottom:10px;
+}
+
+
+.iniconcluidas .view-content p{
+text-align:left;
+margin: 0px;
+}
+
+/*vistas en general*/
+
+.view ul li .views-field-title {
+font-size:1.2em;
+}
+
+.views-exposed-form .views-exposed-widget .form-submit {
+margin-top:0px;
+}
+
+.view ul li.views-row {
+margin-bottom:1em;
+}
+/*logos*/
+.view-logos ul li.views-row {
+margin-bottom:0em;
+}
+
+.view-logos ul li.views-row a img {
+float:none;
+}
+
+.view-logos ul li.views-row {
+float:left;
+}
+
+.view-logos ul li {
+list-style-type:none;
+}
+
+#logos {
+margin-left:140px;
+}
+/*buscador*/
+#search #edit-submit {
+vertical-align: middle;
+}
+
+#search #edit-submit-1 {
+vertical-align: middle;
+}
+
+
+/* Aliados */
+
+
+
+.field-type-nodereference .teaser-title a{
+font-size: 12pt
+}
+
+.field-type-nodereference .field-items a img{
+float:left;
+padding-right:10px;
+padding-bottom:10px;
+}
+
+/* Time Line*/
+.timeline-event-bubble-title a{
+  font-family:Tahoma,Verdana,Arial,Helvetica,"Bitstream Vera Sans",sans-serif;
+  font-size:0.75em;
+}
+.views-field-field-fecha-value {
+  font-family:Tahoma,Verdana,Arial,Helvetica,"Bitstream Vera Sans",sans-serif;
+  font-size:0.75em;
+}

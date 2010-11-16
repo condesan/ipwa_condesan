@@ -56,7 +56,7 @@
 	
 	
 
-	<div id="main">
+	<div id="main" class="main">
 		<?php if (isset($secondary_links)) : ?>
 		  <?php print theme('links', $secondary_links, array('class' => 'links secondary-links')) ?>
 		<?php endif; ?>	
@@ -96,8 +96,11 @@
 	</div>
 	
 	<?php if ($footer_message): ?>
+			<div id="logos">
+			 <?php print $footer; ?>
+      </div>
 	    <div id="footer">
-		    <?php print $footer_message ?><?php print $footer; ?>
+		    <?php print $footer_message ?>
 	    </div>
 	<?php endif; ?>
 	
