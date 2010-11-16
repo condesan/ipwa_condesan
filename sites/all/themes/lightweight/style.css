@@ -1947,8 +1947,6 @@ vertical-align: middle;
 
 /* Aliados */
 
-
-
 .field-type-nodereference .teaser-title a{
 font-size: 12pt
 }
@@ -1967,4 +1965,16 @@ padding-bottom:10px;
 .views-field-field-fecha-value {
   font-family:Tahoma,Verdana,Arial,Helvetica,"Bitstream Vera Sans",sans-serif;
   font-size:0.75em;
+}
+
+.timalinevista .timeline_nodes{
+height:250px !important;
+}
+
+/* Carta de navegación */
+
+.embedcartatexto {
+float:left;
+padding-right:20px;
+width:500px;
 }

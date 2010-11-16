@@ -13,8 +13,8 @@
 
   <div class="condesan-cdn">
 	<?php
-	$block = module_invoke('menu', 'block', 'view', "menu-cdn");
-	print $block['content'];
+	#$block = module_invoke('menu', 'block', 'view', "menu-cdn");
+	#print $block['content'];
 	?>
   </div>
 
