@@ -18,7 +18,7 @@
 					
 	</div>
 	<div class="dialogo-box">
-	  <h2>Comunicación hallazgos</h2>
+	  <h2><!--Comunicación hallazgos--></h2>
       <?php print $field_imagen_politica_rendered ?>
       <?php print $field_descripcion_rendered ?>
 	  <?php print $field_recursos_rendered ?>
@@ -26,13 +26,13 @@
   </div>
   <div class="right">
 	<div class="dialogo-box aprendizaje">
-	  <h2>Periodismo para el desarrollo </h2>
+	  <h2><!--Periodismo para el desarrollo --></h2>
 	  <?php print $field_imagen_accion_rendered ?>
 	  <?php print $field_descripcion_accion_rendered ?>
 	  <?php print $field_recursos_accion_rendered ?>
 	</div>
     <div class="dialogo-box aprendizaje">
-	  <h2>Gestión de información</h2>
+	  <h2><!--Gestión de información --></h2>
 	  <?php print $field_imagen_conocimiento_rendered ?>
 	  <?php print $field_descripcion_conocimiento_rendered ?>
 	  <?php print $field_recursos_conocimiento_rendered ?>

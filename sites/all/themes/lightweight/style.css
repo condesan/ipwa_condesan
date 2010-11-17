@@ -1869,7 +1869,8 @@ padding-right:10px;
 }
 
 .menudown{
-padding-left:10%;
+/*padding-left:30px;*/
+text-align:center;
 }
 
 /* Iniciativas */
@@ -1978,3 +1979,24 @@ float:left;
 padding-right:20px;
 width:500px;
 }
+
+.view-novedades table.views-view-grid {
+width:100%;
+}
+
+.view-novedades table.views-view-grid td {
+text-align:left;
+vertical-align:top;
+}
+
+.view-novedades table.views-view-grid td .views-field-field-imagen-novedades-fid {
+float:left;
+margin-right:10px;
+}
+
+.view-novedades table.views-view-grid td .views-field-title {
+font-weight:bold;
+font-size:1.2em;
+}
+
+

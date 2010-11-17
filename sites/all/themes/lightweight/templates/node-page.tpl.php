@@ -50,7 +50,11 @@
     <?php print $node->content['body']['#value']; ?>
     <?php print $field_equipo_rendered ?>
     <?php print $field_aliados_rel_rendered ?>
-		<?php if ($node->nid==58) { print $field_ubicacion_rendered ;}?>
+		<?php if ($node->nid==58) { 
+			#print $field_ubicacion_rendered;
+			}
+		
+		?>
   </div>
 
 <?php if ($links): ?>

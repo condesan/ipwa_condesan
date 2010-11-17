@@ -25,8 +25,9 @@
 
   <div class="content clear-block">
     <?php print $picture ?>
-    <?php print $content ?>
-  </div>
+    <?php print $field_imagen_rendered; ?>
+		<?php print $node->content['body']['#value']; ?>
+   </div>
 
 	<?php
 	//$block = (object) module_invoke('tagadelic', 'block', 'view', "1");
